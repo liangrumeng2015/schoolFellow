@@ -5,13 +5,15 @@ const router = require('koa-router')();
 const render = require('koa-art-template');
 const path = require('path');
 const session = require('koa-session');
-const bodyParser = require('koa-bodyparser');
+const bodyParser = require('koa-bodyparser');  // post传值
 const md5 = require('md5');
+const sd = require('silly-datetime');   // 格式化日期
+const jsonp = require('koa-jsonp');
 const app = new Koa();
 
-//配置post提交的中间件
-app.use(bodyParser());
 
+app.use(bodyParser());   // 配置post提交的中间件
+app.use(jsonp());        // 配置jsonp的中间件
 // session中间件的配置：
 app.keys = ['some secret hurr'];
  
@@ -32,7 +34,10 @@ app.use(session(CONFIG, app));
 render(app, {
     root: path.join(__dirname, '/views'),
     extname: '.html',
-    debug: process.env.NODE_ENV !== 'production'
+    debug: process.env.NODE_ENV !== 'production',
+    dateFormat:dateFormat = function(value){
+      return sd.format(new Date(value), 'YYYY-MM-DD HH:mm');
+    }
 });
 
 //引入模块
