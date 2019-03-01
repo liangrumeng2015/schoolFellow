@@ -9,16 +9,9 @@ router.get('/', async(ctx)=>{
     await ctx.render('./admin/login');
 })
 
-// post提交
-router.post('/doLogin',async (ctx)=>{
-    // ctx.body = 'doLogin';
-    // console.log(ctx.request.body);
-
-    // 去数据库匹配   [可以使用两次加密]
-    const username = ctx.request.body.username;
-    const password = ctx.request.body.password;
-    const code = ctx.request.body.code;
-
+// ctx.body = 'doLogin';
+// console.log(ctx.request.body);
+// 去数据库匹配   [可以使用两次加密]
     /**
      * 1.验证用户名和密码是否合法 (前台也得验证)
      * 
@@ -26,7 +19,11 @@ router.post('/doLogin',async (ctx)=>{
      * 
      * 3.成功后，把用户信息写入session中
      */
-
+// post提交
+router.post('/doLogin',async (ctx)=>{
+    const username = ctx.request.body.username;
+    const password = ctx.request.body.password;
+    const code = ctx.request.body.code;
     if(code.toLocaleLowerCase() == ctx.session.code.toLocaleLowerCase()){
         var result = await DB.find('t_user_login',{ 
             "username":username, 
@@ -35,8 +32,7 @@ router.post('/doLogin',async (ctx)=>{
         if(result.length > 0){
             console.log('登录成功');
             ctx.session.userinfo = result[0];
-            // 更新用户表里面   用户的登录时间
-            DB.update('t_user_login',{
+            DB.update('t_user_login',{        // 更新用户表里面   用户的登录时间
                 "_id":DB.getObjectId(result[0]._id)
             },{
                 lastTimeLogin: new Date()
@@ -56,12 +52,10 @@ router.post('/doLogin',async (ctx)=>{
             redirect:  ctx.state.__HOST__ + '/admin/login'
         })
     }
-    
 })
 
 // 验证码
-router.get('/code',async(ctx)=>{
-    //加法运算验证码
+//加法运算验证码
     // var captcha = svgCaptcha.createMathExpr({
     //     size: 4,
     //     fontSize: 50,
@@ -69,7 +63,7 @@ router.get('/code',async(ctx)=>{
     //     height: 40,
     //     background: "#cc9966"
     // });
-
+router.get('/code',async(ctx)=>{
     var captcha = svgCaptcha.create({
         size: 4,
         fontSize: 50,
@@ -80,10 +74,8 @@ router.get('/code',async(ctx)=>{
     // console.log(captcha.text);  //验证码
     // 保存生成的验证码
     ctx.session.code = captcha.text;
-
     //设置响应头
     ctx.response.type = 'image/svg+xml';
-
     ctx.body = captcha.data;
 })
 

@@ -57,5 +57,5 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 app.listen(3000,()=>{
-    console.log('server is running')
+    console.log('server is running............., localhost:3000 is running...........')
 });

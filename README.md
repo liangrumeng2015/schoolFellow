@@ -9,7 +9,6 @@ admin 后台文件
 koa-art-templete 模板引擎
 
 
-
 #mongodb
 mongodb  #npm install mongodb --save
 
@@ -21,20 +20,20 @@ mongodb  #npm install mongodb --save
 
 
 #koa-router
-koa-router    # npm install koa-router --save
+>koa-router    # npm install koa-router --save
 
 
 # 静态资源文件的存储
-koa-static # npm install koa-static --save
+>koa-static # npm install koa-static --save
 
 #session存储
-koa-session   # npm install koa-session --save
+>koa-session   # npm install koa-session --save
 
 #koa-bodyparser  用于获取post请求提交的内容
-koa-bodyparser  #npm install koa-bodyparsre --save 
+>koa-bodyparser  #npm install koa-bodyparsre --save 
 
 #md5 用于加密
-md5  # npm install md5
+>md5  # npm install md5
 
 >(1)`启动文件`: node app.js
 
@@ -42,4 +41,10 @@ md5  # npm install md5
 svg-captcha  # npm install --save svg-captcha
 
 #显示时间格式
-silly-datetime  # npm instal silly-datetime --save
+>silly-datetime  # npm instal silly-datetime --save
+
+
+schoolFellow
+mongodb://127.0.0.1:27017
+数据库连接：
+http://localhost:1234/app/schoolFellow/schoolFellow/t_user_login/view/1
