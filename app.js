@@ -52,6 +52,8 @@ router.use(index);
 router.use('/api',api);
 router.use('/admin',admin);
 
+// 配置中间件 ，访问和package.json同级目录的文件
+app.use(serve('.'));
 // 静态资源
 app.use(serve(__dirname + '/public'));
 

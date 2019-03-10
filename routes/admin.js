@@ -6,6 +6,7 @@ const manager = require('./admin/manager.js');
 const cate_manager = require('./admin/cate_manager.js');
 const article = require('./admin/article.js');
 const url = require('url');
+const ueditor = require('koa2-ueditor');
 
 // 获取url的地址
 router.use(async(ctx,next)=>{
@@ -48,5 +49,13 @@ router.use('/login',login);
 router.use('/manager',manager);  //管理员管理
 router.use('/cate_manager',cate_manager);   // 分类管理
 router.use('/article',article);  // 文章管理
+
+
+// 文本编辑器, 上传文件的路由，在ueditor.config.js里面配置serverUrl
+router.all('/editor/controller',ueditor(['public',{
+    "imageAllowFiles": ['.png','.jpg','.jpeg'],
+    "imagePathFormat": "/upload/ueditor/image/{yyyy}{mm}{dd}/{filename}"   // 保存原文件名
+}]))
+
 
 module.exports = router.routes();
