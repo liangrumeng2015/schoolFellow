@@ -5,7 +5,7 @@
  * http://mongodb.github.io/node-mongodb-native/3.0/api/
  */
 
-//DB¿â
+//DBÂ¿Ã¢
 var MongoDB=require('mongodb');
 var MongoClient =MongoDB.MongoClient;
 const ObjectID = MongoDB.ObjectID;
@@ -14,7 +14,7 @@ var Config=require('./config.js');
 
 class Db{
 
-    static getInstance(){   /*1¡¢µ¥Àý  ¶à´ÎÊµÀý»¯ÊµÀý²»¹²ÏíµÄÎÊÌâ*/
+    static getInstance(){   /*1Â¡Â¢ÂµÂ¥Ã€Ã½  Â¶Ã Â´ÃŽÃŠÂµÃ€Ã½Â»Â¯ÃŠÂµÃ€Ã½Â²Â»Â¹Â²ÃÃ­ÂµÃ„ÃŽÃŠÃŒÃ¢*/
 
         if(!Db.instance){
             Db.instance=new Db();
@@ -24,15 +24,15 @@ class Db{
 
     constructor(){
 
-        this.dbClient=''; /*ÊôÐÔ ·Ådb¶ÔÏó*/
-        this.connect();   /*ÊµÀý»¯µÄÊ±ºò¾ÍÁ¬½ÓÊý¾Ý¿â*/
+        this.dbClient=''; /*ÃŠÃ´ÃÃ” Â·Ã…dbÂ¶Ã”ÃÃ³*/
+        this.connect();   /*ÃŠÂµÃ€Ã½Â»Â¯ÂµÃ„ÃŠÂ±ÂºÃ²Â¾ÃÃÂ¬Â½Ã“ÃŠÃ½Â¾ÃÂ¿Ã¢*/
 
     }
 
-    connect(){  /*Á¬½ÓÊý¾Ý¿â*/
+    connect(){  /*mongoDBæ•°æ®åº“çš„è¿žæŽ¥*/
       let _that=this;
       return new Promise((resolve,reject)=>{
-          if(!_that.dbClient){         /*1¡¢½â¾öÊý¾Ý¿â¶à´ÎÁ¬½ÓµÄÎÊÌâ*/
+          if(!_that.dbClient){
               MongoClient.connect(Config.dbUrl,(err,client)=>{
 
                   if(err){
@@ -55,13 +55,32 @@ class Db{
 
     }
 
-    find(collectionName,json){
+    find(collectionName,json1,json2,json3,json4){
+          //jsä¸­å®žå‚ã€å½¢å‚ä¸ªæ•°å¯ä»¥ä¸ä¸€æ ·
+        if(arguments.length == 2){
+            var attr = {};
+            var slipNum = 0;
+            var pageSize = 0;
+        } else if(arguments.length == 3){
+            var attr = json2;
+            var slipNum = 0;
+            var pageSize = 0;
+
+        } else if(arguments.length == 4){
+            var attr = json2;
+            var page = json3.page || 1;
+            var pageSize = json3.pageSize || 20;
+            var slipNum = (page-1)*pageSize;
+            
+        } else{
+            console.log('ä¼ å…¥å‚æ•°é”™è¯¯');
+        }
 
        return new Promise((resolve,reject)=>{
 
             this.connect().then((db)=>{
 
-                var result=db.collection(collectionName).find(json);
+                var result=db.collection(collectionName).find(json1,{fields:attr,}).skip(slipNum).limit(pageSize);
 
                 result.toArray(function(err,docs){
 
@@ -77,7 +96,6 @@ class Db{
     }
     update(collectionName,json1,json2){
         return new Promise((resolve,reject)=>{
-
 
                 this.connect().then((db)=>{
 
@@ -133,9 +151,19 @@ class Db{
             })
         })
     }
-    getObjectId(id){    /*mongodbÀïÃæ²éÑ¯ _id °Ñ×Ö·û´®×ª»»³É¶ÔÏó*/
+    getObjectId(id){    /*mongoDB èŽ·å–idå€¼*/
 
         return new ObjectID(id);
+    }
+    count(collectionName,json){      // ç»Ÿè®¡æ€»æ•°é‡
+        return new Promise((resolve,reject)=>{
+            this.connect().then((db)=>{
+                var result = db.collection(collectionName).count(json);
+                result.then(function(count){
+                    resolve(count);
+                })
+            })
+        })
     }
 }
 

@@ -73,7 +73,7 @@ router.post('/doEditor', async(ctx)=>{
         var username = ctx.request.body.username;
         var password = ctx.request.body.password;
         var rpassword = ctx.request.body.rpassword;
-        if(password != ''){
+        if(password != ''){     // 有修改
             if(password.length < 6){
                 await ctx.render('admin/error',{
                     message: ' 密码不能少于6位',
@@ -89,7 +89,7 @@ router.post('/doEditor', async(ctx)=>{
                 var updateResult = await DB.update('t_user_login',{'_id':DB.getObjectId(id)},{"password":tools.md5(password)});
                 ctx.redirect(ctx.state.__HOST__ + '/admin/manager');
             } 
-        } else {
+        } else {   // 没有修改密码
             ctx.redirect(ctx.state.__HOST__ + '/admin/manager');
         }
     } catch(err) {

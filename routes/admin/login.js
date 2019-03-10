@@ -24,11 +24,15 @@ router.post('/doLogin',async (ctx)=>{
     const username = ctx.request.body.username;
     const password = ctx.request.body.password;
     const code = ctx.request.body.code;
+    console.log('用户名：'+username);
+    console.log('密码:'+password);
     if(code.toLocaleLowerCase() == ctx.session.code.toLocaleLowerCase()){
         var result = await DB.find('t_user_login',{ 
             "username":username, 
             "password":tools.md5(password)
         }); 
+         // var result = await DB.find('t_user_login',{}); 
+        console.log('登录成功'+result);
         if(result.length > 0){
             console.log('登录成功');
             ctx.session.userinfo = result[0];

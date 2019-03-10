@@ -2,6 +2,7 @@
 var app={
 
     dbUrl: 'mongodb://localhost:27017/',
+    // dbUrl: 'http://localhost:27017/',
 
     dbName: 'schoolFellow'
     // 使用的是schoolFellow这个数据库

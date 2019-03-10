@@ -9,6 +9,8 @@ const bodyParser = require('koa-bodyparser');  // post传值
 const md5 = require('md5');
 const sd = require('silly-datetime');   // 格式化日期
 const jsonp = require('koa-jsonp');
+
+
 const app = new Koa();
 
 
@@ -39,6 +41,7 @@ render(app, {
       return sd.format(new Date(value), 'YYYY-MM-DD HH:mm');
     }
 });
+
 
 //引入模块
 const index = require('./routes/index.js');

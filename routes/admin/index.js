@@ -15,6 +15,7 @@ router.get('/', async(ctx)=>{
     await ctx.render('admin/index');
 })
 
+// 改变状态的路由
 router.get('/changeStatus', async(ctx)=>{
    // console.log(ctx.query);
    var collectionName = ctx.query.collectionName;   // 数据库
@@ -45,6 +46,22 @@ router.get('/changeStatus', async(ctx)=>{
    }
     
 //    ctx.body = {"message":"更新成功","success":true}
+})
+
+
+
+//删除的路由(common)
+router.get('/remove', async(ctx)=>{
+  try{
+    var collection = ctx.query.collection;  // 获取到数据库中的表
+    var id = ctx.query.id;   // 要删除的id
+    var result = DB.remove(collection,{'_id':DB.getObjectId(id)});
+
+    // 返回的地方？
+    ctx.redirect(ctx.state.G.prevPage);
+  }catch(error){
+    ctx.redirect(ctx.state.G.prevPage);
+  }
 })
 
 

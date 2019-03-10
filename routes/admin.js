@@ -3,6 +3,8 @@ const router = require('koa-router')();
 const index = require('./admin/index.js');
 const login = require('./admin/login.js');
 const manager = require('./admin/manager.js');
+const cate_manager = require('./admin/cate_manager.js');
+const article = require('./admin/article.js');
 const url = require('url');
 
 // 获取url的地址
@@ -19,7 +21,8 @@ router.use(async(ctx,next)=>{
     // 设置全局的userinfo
     ctx.state.G = {
         url: splitUrl,
-        userinfo: ctx.session.userinfo 
+        userinfo: ctx.session.userinfo ,
+        prevPage: ctx.request.headers['referer']   // 返回上一页的地址
     }
     
 
@@ -42,6 +45,8 @@ router.get('/', async(ctx)=>{
 
 router.use(index);   // 后台首页
 router.use('/login',login);
-router.use('/manager',manager);
+router.use('/manager',manager);  //管理员管理
+router.use('/cate_manager',cate_manager);   // 分类管理
+router.use('/article',article);  // 文章管理
 
 module.exports = router.routes();

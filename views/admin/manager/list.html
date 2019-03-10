@@ -70,12 +70,12 @@
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group center">
 												
 												<a href="{{__HOST__}}/admin/manager/edit?id={{@$value._id}}" style="display:inline-block">
-													<button class="btn btn-xs btn-info">
+													<button class="btn btn-xs btn-info" title="重置密码">
 														<i class="icon-edit bigger-120"></i>
 													</button>
 												</a>
 												
-												<a href="{{__HOST__}}/admin/manager/delete?id={{@$value._id}}" style="display:inline-block">
+												<a class="delete" href="{{__HOST__}}/admin/remove?collection=t_user_login&id={{@$value._id}}" style="display:inline-block">
 													<button class="btn btn-xs btn-danger">
 														<i class="icon-trash bigger-120"></i>
 													</button>

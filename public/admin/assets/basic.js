@@ -1,3 +1,6 @@
+$(function(){
+    app.confirmDelete();
+})
 var app = {
     toggle:function(el,collectionName,attr,id){
         $.get('/admin/changeStatus',{
@@ -12,6 +15,12 @@ var app = {
                     el.src = '/admin/assets/images/yes.gif';
                 }
             }
+        })
+    },
+    confirmDelete:function(){   // 删除的弹框
+        $('.delete').click(function(){
+            var flag = confirm('您确定要删除？');
+            return flag;
         })
     }
 }

@@ -64,29 +64,26 @@
                         增加管理员
                     </a>
                 </li>
-
-                
             </ul>
         </li>
 
-        <li>
+        <li {{if G.url[1] == "cate_manager"}} class="active open" {{/if}}>
             <a href="#" class="dropdown-toggle">
-                <i class="icon-list"></i>
+                <i class="icon-user-md"></i>
                 <span class="menu-text"> 分类管理 </span>
-
                 <b class="arrow icon-angle-down"></b>
             </a>
 
             <ul class="submenu">
-                <li>
-                    <a href="tables.html">
+                <li {{if !G.url[2]}} class="active" {{/if}}>
+                    <a href="{{__HOST__}}/admin/cate_manager">
                         <i class="icon-double-angle-right"></i>
                         分类列表
                     </a>
-                </li>
+                </li>  
 
-                <li>
-                    <a href="jqgrid.html">
+                <li {{if G.url[2] == 'add_cate'}} class="active" {{/if}}>
+                    <a href="{{__HOST__}}/admin/cate_manager/add_cate">
                         <i class="icon-double-angle-right"></i>
                         增加分类
                     </a>
@@ -94,7 +91,7 @@
             </ul>
         </li>
 
-        <li>
+        <li {{if G.url[1] == "article"}} class="active open" {{/if}}>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-edit"></i>
                 <span class="menu-text"> 内容管理 </span>
@@ -103,15 +100,15 @@
             </a>
 
             <ul class="submenu">
-                <li>
-                    <a href="form-elements.html">
+                <li {{if !G.url[2]}} class="active" {{/if}}>
+                    <a href="{{__HOST__}}/admin/article">
                         <i class="icon-double-angle-right"></i>
                         内容列表
                     </a>
                 </li>
 
                 <li>
-                    <a href="form-wizard.html">
+                    <a href="{{__HOST__}}/admin/article/add_article">
                         <i class="icon-double-angle-right"></i>
                          增加内容
                     </a>
