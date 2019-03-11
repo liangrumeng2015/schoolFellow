@@ -71,6 +71,12 @@ class Db{
             var page = json3.page || 1;
             var pageSize = json3.pageSize || 20;
             var slipNum = (page-1)*pageSize;
+
+            if(json3.sortJson){
+                var sortJson = json3.sortJson;
+            } else {
+                var sortJson = {}
+            }
             
         } else{
             console.log('传入参数错误');
@@ -80,7 +86,7 @@ class Db{
 
             this.connect().then((db)=>{
 
-                var result=db.collection(collectionName).find(json1,{fields:attr,}).skip(slipNum).limit(pageSize);
+                var result=db.collection(collectionName).find(json1,{fields:attr,}).skip(slipNum).limit(pageSize).sort(sortJson);
 
                 result.toArray(function(err,docs){
 

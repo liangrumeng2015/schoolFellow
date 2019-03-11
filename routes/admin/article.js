@@ -38,7 +38,10 @@ router.get('/', async(ctx)=>{
     console.log(count);
     var result = await DB.find('t_article',{},{},{
     	page:page,
-    	pageSize:pageSize
+    	pageSize:pageSize,
+        sortJson: {
+            'add_time': -1 
+        }
     })
     console.log('分类列表的值:'+result);
     ctx.body = '分类列表';
@@ -80,9 +83,11 @@ router.post('/doAdd',upload.single('img_url'),async(ctx)=>{     // img_url封面
     let description = ctx.req.body.description || '';
     let content = ctx.req.body.content || '';
 
-    let img_url = ctx.req.file?ctx.req.file.path:'';
+    let img_url = ctx.req.file?ctx.req.file.path.substr(7) : '';
+
+    let add_time = tools.getTime();
     let json = {
-        pid,catename,title,author,status,is_best,is_hot,is_new,keywords,description,content,img_url
+        pid,catename,title,author,status,is_best,is_hot,is_new,keywords,description,content,img_url,add_time
     }
     var result = DB.insert('t_article',json);
 
@@ -120,7 +125,7 @@ router.post('/doEdit',upload.single('img_url'), async(ctx)=>{
     let description = ctx.req.body.description || '';
     let content = ctx.req.body.content || '';
 
-    let img_url = ctx.req.file?ctx.req.file.path : '';
+    let img_url = ctx.req.file?ctx.req.file.path.substr(7) : '';
 
     if(img_url){
         var json = {

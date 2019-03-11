@@ -22,5 +22,15 @@ var app = {
             var flag = confirm('您确定要删除？');
             return flag;
         })
+    },
+    changeSort(el,collectionName,id){          // 改变排序的ajax接口
+        var sortValue = el.value;
+        $.get('/admin/changeSort',{
+            collectionName:collectionName,
+            id:id,
+            sortValue: sortValue
+        },function(data){
+            console.log(data);
+        })
     }
 }

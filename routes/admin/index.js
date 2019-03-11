@@ -49,6 +49,26 @@ router.get('/changeStatus', async(ctx)=>{
 })
 
 
+// 改变排序的ajax接口
+router.get('/changeSort',async(ctx)=>{
+  var collectionName = ctx.query.collectionName;      //数据库表
+  var sortValue = ctx.query.sortValue;   // 更新排序的值
+  var id = ctx.query.id;
+
+  // 更新的数据
+  var json = {
+    sort:sortValue
+  }
+  let updateResult = await DB.update(collectionName,{"_id":DB.getObjectId(id)},json);
+
+  if(updateResult){
+    ctx.body = {"message":"更新成功","success":true};
+  }else{
+    ctx.body = {"message":"更新失败","success":false}
+  }
+
+})
+
 
 //删除的路由(common)
 router.get('/remove', async(ctx)=>{
