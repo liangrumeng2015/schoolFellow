@@ -107,7 +107,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li {{if G.url[2] == 'add_article'}} class="active" {{/if}}>
                     <a href="{{__HOST__}}/admin/article/add_article">
                         <i class="icon-double-angle-right"></i>
                          增加内容
@@ -117,7 +117,7 @@
             </ul>
         </li>
 
-        <li>
+        <li {{if G.url[1] == "focus"}} class="active open" {{/if}}>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-picture"></i>
                 <span class="menu-text"> 轮播图管理 </span>
@@ -126,15 +126,15 @@
             </a>
 
             <ul class="submenu">
-                <li>
-                    <a href="#">
+                <li {{if !G.url[2]}} class="active" {{/if}}>
+                    <a href="{{__HOST__}}/admin/focus">
                         <i class="icon-double-angle-right"></i>
                         轮播图列表
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
+                <li {{if G.url[2] == 'add'}} class="active" {{/if}}>
+                    <a href="{{__HOST__}}/admin/focus/add">
                         <i class="icon-double-angle-right"></i>
                         增加轮播图
                     </a>
@@ -144,28 +144,25 @@
             </ul>
         </li>
 
-        <li>
+        <li {{if G.url[1] == "link"}} class="active open" {{/if}}>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-paperclip"></i>
-
                 <span class="menu-text">
                     友情链接管理
-                    
                 </span>
-
                 <b class="arrow icon-angle-down"></b>
             </a>
 
             <ul class="submenu">
-                <li>
-                    <a href="#">
+                <li {{if !G.url[2]}} class="active" {{/if}}>
+                    <a href="{{__HOST__}}/admin/link">
                         <i class="icon-double-angle-right"></i>
                         友情链接列表
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
+                <li {{if G.url[2] == 'add'}} class="active" {{/if}}>
+                    <a href="{{__HOST__}}/admin/link/add">
                         <i class="icon-double-angle-right"></i>
                         增加友情链接
                     </a>
@@ -175,7 +172,7 @@
             
         </li>
 
-        <li>
+        <li {{if G.url[1] == "nav"}} class="active open" {{/if}}>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-list-alt"></i>
 
@@ -188,16 +185,16 @@
             </a>
 
             <ul class="submenu">
-                <li>
-                    <a href="#">
-                        <i class="icon-double-angle-right"></i>
-                        增加导航
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
+                <li {{if !G.url[2]}} class="active" {{/if}}>
+                     <a href="{{__HOST__}}/admin/nav">
                         <i class="icon-double-angle-right"></i>
                         导航列表
+                    </a>
+                </li>
+                <li {{if G.url[2] == 'add'}} class="active" {{/if}}>
+                   <a href="{{__HOST__}}/admin/nav/add">
+                        <i class="icon-double-angle-right"></i>
+                        增加导航
                     </a>
                 </li>							
             </ul>

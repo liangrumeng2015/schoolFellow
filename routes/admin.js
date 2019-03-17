@@ -5,6 +5,10 @@ const login = require('./admin/login.js');
 const manager = require('./admin/manager.js');
 const cate_manager = require('./admin/cate_manager.js');
 const article = require('./admin/article.js');
+const focus = require('./admin/focus.js');
+const link = require('./admin/link.js');
+const nav = require('./admin/nav.js');
+
 const url = require('url');
 const ueditor = require('koa2-ueditor');
 
@@ -49,7 +53,9 @@ router.use('/login',login);
 router.use('/manager',manager);  //管理员管理
 router.use('/cate_manager',cate_manager);   // 分类管理
 router.use('/article',article);  // 文章管理
-
+router.use('/focus',focus);    // 轮播图界面
+router.use('/link',link);    // 友情链接
+router.use('/nav',nav);       // 导航管理
 
 // 文本编辑器, 上传文件的路由，在ueditor.config.js里面配置serverUrl
 router.all('/editor/controller',ueditor(['public',{
