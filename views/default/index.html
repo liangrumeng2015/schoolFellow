@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>长春师范大学校友管理系统</title>
+	<link rel="stylesheet" type="text/css" href="default/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/index.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/swiper.min.css" />	
+  <script type="text/javascript" src="default/js/swiper.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>	
+	
+	
+</head>
+<body>
+{{include 'default/public/header.html'}}
+<div id="banner-wrapper" style="height: 400px"> 	        	
+  <div class="swiper-container"  >
+    <div class="swiper-wrapper">
+      {{each focus}}
+      <div class="swiper-slide">
+      	<!-- <img src="default/images/banner5.jpg" alt="" />   1920x320 -->
+          <img src="{{$value.pic}}" alt="{{$value.title}}" width="1920" height="400">
+      </div>
+     {{/each}}
+    </div>
+     <div class="swiper-pagination"></div>
+     
+     <div class="swiper-button-prev swiper-button-white"></div>
+     <div class="swiper-button-next swiper-button-white"></div>
+     
+  </div>
+</div>
+<!-- left-part -->
+<div class="content-part">
+  <div class="login_part">
+      <form class="user-form">
+        <h2>用户登录/注册 >></h2>
+        <div><span class="txt">用户名:</span><input type="text"></div>
+        <div><span class="txt">密&nbsp;&nbsp;码:</span><input type="password"></div>
+        <input type="button" class="btn01" id="login" value="登录">
+        <input type="button" class="btn02" id="reg" value="注册">
+        <div class="reg_box">
+          <h2>用户注册</h2>
+          <form  >
+            <div><span class="txt">用户名:</span><input type="text" for="username" id="username"></div>
+            <div><span class="txt">性别:</span><input type="text" for="sex" id="sex"></div>
+            <div><span class="txt">出生年月:</span><input type="text" for="birthday"></div>
+            <div><span class="txt">手机号码:</span><input type="text" for="mobile"></div>
+            <div><span class="txt">邮箱:</span><input type="text" for="email"></div>
+            <div><span class="txt">毕业时间:</span><input type="text" for="graduationTime"></div>
+            <div><span class="txt">工作:</span><input type="text" for="job"></div>
+            <input type="button" class="btn01" id="ok-reg" value="确定注册">
+            <input type="button" class="btn01" value="取消注册">
+          </form>
+        </div>
+        <div class="black_bg"></div>
+      </form>
+      <!-- 系统公告 -->
+      <div class="info">
+        <h2>系统公告 >></h2>
+        <ul>
+          <li><a href="http://news.ccsfu.edu.cn/">长师新闻网上线啦</a></li>
+          <li><a href="http://zbcg.ccsfu.edu.cn/zbxx.htm">长师招标信息有更新</a></li>
+          <li>更多信息敬请期待</li>
+        </ul>
+      </div>
+      <!-- 友情链接 -->
+      <div class="info">
+        <h2>友情链接 >></h2>
+        <ul>
+          <li><a href="http://www.cncnc.edu.cn/" target="_blank">长春师范大学【官网】</a></li>
+          <li><a href="http://202.198.96.4/tmweb/login.aspx" target="_blank">长春师范大学【教务系统】</a></li>
+          <li><a href="http://cncnc.co.cnki.net/Main.html?r=1554386295151" target="_blank">长春师范大学【论文答辩】</a></li>
+          <li><a href="http://zhaosheng.ccsfu.edu.cn/" target="_blank">长春师范大学【招生信息网】</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="right-part">
+      <div class="right-part-top">
+          <h2>校园新闻 >></h2>
+          <ul>
+            <li><a href="">喜讯：我校学生在第十届全国大学生数学竞赛决赛中取得优异成绩</a><span class="time-part">2019-03-23</span></li>
+            <li><a href="">青春心向党 建功新时代——校团委举办团校成立仪式暨第八期大学生骨干培训</a><span class="time-part">2019-02-23</span></li>
+            <li><a href="">学生工作处组织新疆籍少数民族学生观看《新疆的反恐 去极端化斗争》专题片</a><span class="time-part">2019-02-10</span></li>
+            <li><a href="">我校举办精彩长师人创新创业篇校友系列讲座——创业从菜鸟到达人</a><span class="time-part">2019-02-01</span></li>
+            <li><a href="">喜讯：我校获批三个国家战略性新兴产业专业 成为教育部批准建设首批“人工智能”本科新专业的35所高校之一</a><span class="time-part">2019-01-03</span></li>
+            <li><a href="">我校教师青马学会赴长春革命烈士陵园开展缅怀英烈祭扫活动</a><span class="time-part">2019-01-01</span></li>
+          </ul>
+      </div>
+      <div class="right-part-top">
+          <h2>新闻资讯 >></h2>
+          <ul>
+            <li><a href="">喜讯：我校学生在第十届全国大学生数学竞赛决赛中取得优异成绩</a><span class="time-part">2019-03-23</span></li>
+            <li><a href="">青春心向党 建功新时代——校团委举办团校成立仪式暨第八期大学生骨干培训</a><span class="time-part">2019-02-23</span></li>
+            <li><a href="">学生工作处组织新疆籍少数民族学生观看《新疆的反恐 去极端化斗争》专题片</a><span class="time-part">2019-02-10</span></li>
+            <li><a href="">我校举办精彩长师人创新创业篇校友系列讲座——创业从菜鸟到达人</a><span class="time-part">2019-02-01</span></li>
+            <li><a href="">喜讯：我校获批三个国家战略性新兴产业专业 成为教育部批准建设首批“人工智能”本科新专业的35所高校之一</a><span class="time-part">2019-01-03</span></li>
+            <li><a href="">我校教师青马学会赴长春革命烈士陵园开展缅怀英烈祭扫活动</a><span class="time-part">2019-01-01</span></li>
+          </ul>
+      </div>
+    </div>
+</div>
+
+
+
+
+{{include 'default/public/footer.html'}}
+        
+  <script>
+   $(function(){
+      $('#reg').click(function(){
+        $('.reg_box').show();
+        $('.black_bg').show();
+      })
+      $('#ok-reg').click(function(){
+        console.log('进入到了ajax请求数据的接口里面');
+        $.ajax({
+          url:'/admin/login/doReg',
+          type:'post',
+          data:{
+            username:$("#username"),
+            sex:$('#sex')
+          },
+          success:function(res){
+            console.log(res);
+          }
+        })
+      })
+   })
+    var mySwiper = new Swiper('.swiper-container',{
+    	  autoplay:true,
+        loop:true,
+		  pagination: {
+		    el: '.swiper-pagination',
+		  },
+		   navigation: {
+		    nextEl: '.swiper-button-next',
+		    prevEl: '.swiper-button-prev',
+		  }
+		
+	})
+  </script>
+        
+    
+</body>
+</html>

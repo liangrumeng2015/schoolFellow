@@ -58,6 +58,25 @@ router.post('/doLogin',async (ctx)=>{
     }
 })
 
+router.post('/doReg',async (ctx)=>{
+    
+    console.log(ctx.request.body)
+    let {name,sex}=ctx.request.body
+    ctx.response.set("Content-Type", "application/json")
+    if(name==='aaa'&&sex==='aaa'){
+        
+        ctx.status = 200;
+        ctx.body = {                                   //post返回接口数据
+            status_code:'0',
+            data: 'register success'
+        };
+    }else{
+        ctx.body = {
+            status_code:'1001',
+            data: '账号或密码错误'
+        };
+    }
+})
 // 验证码
 //加法运算验证码
     // var captcha = svgCaptcha.createMathExpr({

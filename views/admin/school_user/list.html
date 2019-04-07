@@ -23,7 +23,7 @@
 
 						<div class="page-header">
 							<h1>
-								列表								
+								列表1								
 							</h1>
 						</div><!-- /.page-header -->
 
@@ -36,14 +36,19 @@
 								<thead>
 									<tr>
 										<th class="center">用户名</th>
-										<th class="center" style="display: none">分类</th>
-
+										<th class="center">性别</th>
+										<th class="center">生日</th>
+										<th class="center">电话</th>
+										<th class="center">邮箱</th>
 										<th class="center">
 											<i class="icon-time bigger-110 hidden-480"></i>
 											最后登录的时间
 										</th>
-										<th class="center">状态</th>
-
+										<th class="center">
+											<i class="icon-time bigger-110 hidden-480"></i>
+											毕业时间
+										</th>
+										<th class="center">工作</th>
 										<th width="160px;" class="center">操作</th>
 									</tr>
 								</thead>
@@ -51,38 +56,27 @@
 								<tbody>
 									{{each list}}
 									<tr class="">
-										<td>
-											{{$value.username}}
-										</td>
-										<td style="display: none">$45</td>
+										<td>{{$value.username}}</td>
+										<td class="center">{{$value.sex}}</td>
+										<td class="center">{{$value.birthday}}</td>
+										<td class="center">{{$value.mobile}}</td>
+										<td class="center">{{$value.email}}</td>
 										<td class="hidden-480">{{$value.lastTimeLogin | dateFormat}}</td>
-										<td class="hidden-480">
-											{{if $value.status == 1}}
-												<img src="{{__HOST__}}/admin/assets/images/yes.gif" onclick="app.toggle(this,'t_user_login','status','{{@$value._id}}')">
-											{{else}}
-												<img src="{{__HOST__}}/admin/assets/images/no.gif" onclick="app.toggle(this,'t_user_login','status','{{@$value._id}}')">
-											{{/if}}
-												<!-- <button class="btn btn-xs btn-success">
-													<i class="icon-ok bigger-120 success"></i>
-												</button> -->
-										</td>
+										<td class="center">{{$value.graduationTime}}</td>
+										<td class="hidden-480">{{$value.job}}</td>
 										<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group center">
-												
-												<a href="{{__HOST__}}/admin/manager/edit?id={{@$value._id}}" style="display:inline-block">
+												<a href="{{__HOST__}}/admin/school_user/edit?id={{@$value._id}}" style="display:inline-block">
 													<button class="btn btn-xs btn-info" title="重置密码">
 														<i class="icon-edit bigger-120"></i>
 													</button>
 												</a>
-												
-												<a class="delete" href="{{__HOST__}}/admin/remove?collection=t_user_login&id={{@$value._id}}" style="display:inline-block">
+												<a class="delete" href="{{__HOST__}}/admin/remove?collection=t_school_user&id={{@$value._id}}" style="display:inline-block">
 													<button class="btn btn-xs btn-danger">
 														<i class="icon-trash bigger-120"></i>
 													</button>
 												</a>
-
 											</div>
-
 										</td>
 									</tr>
 									{{/each}}

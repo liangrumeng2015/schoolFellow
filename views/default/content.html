@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>关于我们</title>
+<link rel="stylesheet" type="text/css" href="/default/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/default/css/common.css" />
+<link rel="stylesheet" type="text/css" href="/default/css/heder_nav-menu.css"/>
+<link rel="stylesheet" type="text/css" href="/default/css/about.css" />
+
+
+</head>
+
+<body>
+{{include 'default/public/header.html'}}
+<div id="header_nav-wrapper">
+    <div class="header_nav">
+    	<h2>{{list.title}}<span>{{list.description}}</span></h2>
+    </div>
+</div>
+
+<div id="main-wrapper">
+	
+    <div class="main">
+    	<h2 class="title"></h2>
+    	{{@list.content}}
+    </div>
+</div>
+{{include 'default/public/footer.html'}}
+</body>
+</html>

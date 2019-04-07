@@ -66,6 +66,29 @@
                 </li>
             </ul>
         </li>
+        <li {{if G.url[1] == "school_user"}} class="active open" {{/if}}>
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-user-md"></i>
+                <span class="menu-text"> 校友列表 </span>
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+                <li {{if !G.url[2]}} class="active" {{/if}}>
+                    <a href="{{__HOST__}}/admin/school_user">
+                        <i class="icon-double-angle-right"></i>
+                        校友信息列表
+                    </a>
+                </li>  
+
+                <li {{if G.url[2] == 'add'}} class="active" {{/if}}>
+                    <a href="{{__HOST__}}/admin/school_user/add">
+                        <i class="icon-double-angle-right"></i>
+                        增加校友
+                    </a>
+                </li>
+            </ul>
+        </li>
 
         <li {{if G.url[1] == "cate_manager"}} class="active open" {{/if}}>
             <a href="#" class="dropdown-toggle">

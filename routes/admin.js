@@ -3,11 +3,13 @@ const router = require('koa-router')();
 const index = require('./admin/index.js');
 const login = require('./admin/login.js');
 const manager = require('./admin/manager.js');
+const school_user = require('./admin/school_user.js');
 const cate_manager = require('./admin/cate_manager.js');
 const article = require('./admin/article.js');
 const focus = require('./admin/focus.js');
 const link = require('./admin/link.js');
 const nav = require('./admin/nav.js');
+
 
 const url = require('url');
 const ueditor = require('koa2-ueditor');
@@ -56,6 +58,7 @@ router.use('/article',article);  // 文章管理
 router.use('/focus',focus);    // 轮播图界面
 router.use('/link',link);    // 友情链接
 router.use('/nav',nav);       // 导航管理
+router.use('/school_user',school_user);   // 校友的信息管理
 
 // 文本编辑器, 上传文件的路由，在ueditor.config.js里面配置serverUrl
 router.all('/editor/controller',ueditor(['public',{
